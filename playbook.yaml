@@ -1,1 +1,8 @@
-
+---
+- hosts: all
+  remote_user: ec2-user
+  tasks:
+    - name: Copy file 
+      ansible.builtin.copy:
+        src: /tmp/test.test
+        dest: ~/
