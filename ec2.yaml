@@ -1,0 +1,12 @@
+- name: start an instance and Add EBS
+  amazon.aws.ec2_instance:
+    name: "public-withebs-instance"
+    vpc_subnet_id: subnet-5ca1ab1e
+    instance_type: t2.micro
+    key_name: "tuncay"
+    security_group: default
+    volumes:
+      - device_name: /dev/sda1
+        ebs:
+          volume_size: 16
+          delete_on_termination: true

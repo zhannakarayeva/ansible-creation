@@ -1,8 +1,27 @@
 ---
 - hosts: all
   remote_user: ec2-user
+  become: yes
   tasks:
     - name: Copy file 
       ansible.builtin.copy:
         src: /tmp/test.test
         dest: ~/
+    - name: install apache server   # name of the play
+      yum:
+        name: httpd
+        state: latest
+        update_cache: yes
+    - name: start and enable autostart of apache server
+      systemd:
+        name: httpd
+        state: started
+        enabled: yes
+    - name: Status of httpd
+      ansible.builtin.service:
+        name: httpd
+        state: reloaded  
+    - name: Start service httpd, if not started
+      ansible.builtin.service:
+        name: httpd
+        state: started
