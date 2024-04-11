@@ -1,12 +1,17 @@
-- name: start an instance and Add EBS
-  amazon.aws.ec2_instance:
-    name: "public-withebs-instance"
-    vpc_subnet_id: subnet-5ca1ab1e
-    instance_type: t2.micro
-    key_name: "tuncay"
-    security_group: default
-    volumes:
-      - device_name: /dev/sda1
-        ebs:
-          volume_size: 16
-          delete_on_termination: true
+---
+- hosts: localhost
+  become: false
+  tasks:
+  - name: Spot Request Creation with more options
+    amazon.aws.ec2_spot_instance:
+      launch_specification:
+        image_id: ami-123456789
+        key_name: my-keypair
+        instance_type: t2.medium
+        subnet_id: subnet-12345678
+        block_device_mappings:
+          - device_name: /dev/sdb
+            ebs:
+              delete_on_termination: true
+              volume_type: gp3
+              volume_size: 5
