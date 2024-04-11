@@ -5,10 +5,9 @@
   - name: Spot Request Creation with more options
     amazon.aws.ec2_spot_instance:
       launch_specification:
-        image_id: ami-123456789
-        key_name: my-keypair
-        instance_type: t2.medium
-        subnet_id: subnet-12345678
+        image_id: ami-0900fe555666598a2
+        key_name: tuncay
+        instance_type: t2.micro
         block_device_mappings:
           - device_name: /dev/sdb
             ebs:
