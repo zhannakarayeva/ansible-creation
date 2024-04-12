@@ -1,0 +1,22 @@
+---
+- hosts: ubuntu
+  remote_user: ubuntu
+  become: yes
+  tasks:
+  - name: install webserver
+    apt:
+      name: nginx
+      state: latest
+  - name: Start nginx
+    ansible.builtin.service:
+        name: nginx
+        state: started
+  - name: install postgresql
+    apt: 
+         name: postgresql
+         state: latest
+  - name: Start postgresql
+    ansible.builtin.service:
+        name: postgresql
+        state: started
+  
