@@ -18,3 +18,7 @@
     - test02.txt
     - test03.txt
     - test04.txt
+  - name: Creating a new directory
+    file:
+      path: "~/text"
+      state: directory
