@@ -1,18 +1,22 @@
 ---
 - hosts: ubuntu
   remote_user: ubuntu
+  become: yes
   tasks:
   - name: Creating a file with content
     copy:
+      src: /tmp/
       dest: "~/text.sh"
       mode: 0755
       content: |
-        apt get update
-        apt intall nginx
+        tuncay
+        sergey
+        julia
   - name: Create multiple files
     file: 
       path: "{{ item }}"
       state: touch
+      mode: 0755
     with_items:
     - test01.txt
     - test02.txt

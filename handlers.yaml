@@ -1,0 +1,27 @@
+---
+- name: Copy text.sh file and replace 'julia' with 'yulia'
+  hosts: ubuntu
+  remote_user: ubuntu
+  tasks:
+    - name: Create text.sh file with content
+      copy:
+        content: |
+          #!/bin/bash
+          echo "tuncay sergey paul algreim nogar" > /tmp/text.txt
+          echo "diana julia" >> /tmp/text.txt
+        dest: /tmp/text.sh
+        mode: '0755'
+
+    - name: Copy text.sh file to /tmp folder
+      copy:
+        src: /tmp/text.sh
+        dest: /tmp/text.sh
+        mode: '0755'
+        remote_src: yes
+      notify: replace_julia
+      become: true
+
+  handlers:
+    - name: replace_julia
+      shell: sed -i 's/julia/yulia/' /tmp/text.txt
+

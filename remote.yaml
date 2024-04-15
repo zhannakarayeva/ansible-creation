@@ -1,0 +1,25 @@
+---
+- name: Deploy web server
+  hosts: ubuntu:ec2-user
+  become: true
+  vars:
+    remote_user: "{{ ansible_user }}"  # Variable for remote_user
+  tasks:
+    - name: Install Apache web server
+      package:
+        name: apache2
+        state: present
+      when: ansible_os_family == "Debian"  # Install Apache on Ubuntu servers
+    
+    - name: Install Apache web server
+      package:
+        name: httpd
+        state: present
+      when: ansible_os_family == "RedHat"  # Install Apache on Amazon Linux servers
+    
+    - name: Start Apache service
+      service:
+        name: "{{ apache_service }}"
+        state: started
+      vars:
+        apache_service: "{{ 'apache2' if ansible_os_family == 'Debian' else 'httpd' }}"  # Determine service name based on OS
