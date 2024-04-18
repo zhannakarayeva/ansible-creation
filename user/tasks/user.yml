@@ -1,0 +1,11 @@
+---
+ - name: Create Users Task
+   user:
+        name: "{{ item }}"
+        state: present
+        shell: /bin/bash
+        group: dev
+   loop:
+        - jake
+        - tom
+        - algreim
