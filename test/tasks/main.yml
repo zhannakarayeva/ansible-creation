@@ -1,2 +1,11 @@
 ---
-# tasks file for test
+- name: Install httpd Package
+  yum: name=httpd state=latest
+# - name: Copy httpd configuration file
+#   copy: src=~/absible/test/files/httpd.conf dest=/etc/httpd/conf/httpd.conf
+# - name: Copy index.html file
+#   copy: src=~/absible/test/files/index.html dest=/var/www/html
+  notify:
+  - restart apache
+- name: Start and Enable httpd service
+  service: name=httpd state=restarted enabled=yes
