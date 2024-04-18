@@ -1,0 +1,5 @@
+---
+ - name: install webserver
+   apt:
+      name: nginx
+      state: latest
