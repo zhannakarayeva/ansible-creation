@@ -41,3 +41,5 @@ We learned about ansible-playbooks and ansible-galaxy (roles) and we learned abo
       state: directory
 ```
 
+Paul are you with me
+Diana RE YOU OKAY
