@@ -1,0 +1,5 @@
+---
+  - name: Spot Request Termination
+    amazon.aws.ec2_spot_instance:
+        spot_instance_request_ids: ['sir-3xeyr2wn', 'sir-zhn6vjdq']
+        state: absent

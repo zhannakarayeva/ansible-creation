@@ -1,0 +1,5 @@
+---
+- name: Terminate aws instance
+  ec2_instance:
+        state: 'absent'
+        instance_ids: '*'

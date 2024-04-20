@@ -1,0 +1,14 @@
+---
+- name: Spot Request Creation with more options
+  amazon.aws.ec2_spot_instance:
+      launch_specification:
+        image_id: ami-0900fe555666598a2
+        key_name: tuncay
+        security_group_ids: sg-0c51ed3484432fe7f
+        instance_type: t2.micro
+        block_device_mappings:
+          - device_name: /dev/sdb
+            ebs:
+              delete_on_termination: true
+              volume_type: gp3
+              volume_size: 5
