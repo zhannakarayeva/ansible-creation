@@ -10,3 +10,34 @@ We learned about ansible-playbooks and ansible-galaxy (roles) and we learned abo
 - import_tasks: stop.yml
 - import_tasks: terminate.yml
 ```
+```
+---
+- hosts: ubuntu
+  remote_user: ubuntu
+  become: yes
+  tasks:
+  - name: Creating a file with content
+    copy:
+      src: /tmp/
+      dest: "~/text.sh"
+      mode: 0755
+      content: |
+        tuncay
+        sergey
+        julia
+  - name: Create multiple files
+    file: 
+      path: "{{ item }}"
+      state: touch
+      mode: 0755
+    with_items:
+    - test01.txt
+    - test02.txt
+    - test03.txt
+    - test04.txt
+  - name: Creating a new directory
+    file:
+      path: "~/text"
+      state: directory
+```
+
