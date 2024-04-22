@@ -24,3 +24,4 @@
     ec2_instance:
         state: 'absent'
         instance_ids: '*'
+    

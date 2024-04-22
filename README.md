@@ -48,3 +48,6 @@ review code
 diana's branch 
 test
 test
+
+
+Nogar Needs to work on the speech and tell me abour your servers and what you do with ensible 
