@@ -1,8 +1,8 @@
 ---
 - name: Create Users & Groups
   hosts: ubuntu
-  remote_user: ec2-user
-  become: yes
+  # remote_user: ec2-user
+  # become: yes
   gather_facts: false
   vars:
     ansible_cfg:
