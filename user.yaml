@@ -1,32 +1,6 @@
 ---
 - name: Create Users & Groups
-  hosts: ubuntu
-  # remote_user: ec2-user
-  # become: yes
-  gather_facts: false
-  vars:
-    ansible_cfg:
-      defaults:
-        host_key_checking: false
-  tasks:
-    - name: Create group
-      group:
-        name: dev
-        state:  present
-
-    - name: Create Users Task
-      user:
-        name: "{{ item }}"
-        state: present
-        shell: /bin/bash
-        group: dev
-      loop:
-        - jake
-        - tom
-        - algreim
-     
-- name: Create Users & Groups
-  hosts: amazon-linux
+  hosts: all
   remote_user: ec2-user
   become: yes
   tasks:
@@ -45,3 +19,24 @@
         - jake
         - tom
         - algreim
+     
+# - name: Create Users & Groups
+#   hosts: amazon-linux
+#   remote_user: ec2-user
+#   become: yes
+#   tasks:
+#     - name: Create group
+#       group:
+#         name: dev
+#         state:  present
+
+#     - name: Create Users Task
+#       user:
+#         name: "{{ item }}"
+#         state: present
+#         shell: /bin/bash
+#         group: dev
+#       loop:
+#         - jake
+#         - tom
+#         - algreim
