@@ -19,8 +19,7 @@
         - jake
         - tom
         - algreim
-
-        
+     
 - name: Create Users & Groups
   hosts: amazon-linux
   remote_user: ec2-user
