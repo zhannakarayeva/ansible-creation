@@ -2,7 +2,11 @@
 - name: Create Users & Groups
   hosts: all
   remote_user: ec2-user
-  become: yes
+  gather_facts: false
+  vars:
+    ansible_cfg:
+      defaults:
+        host_key_checking: false
   tasks:
     - name: Create group
       group:

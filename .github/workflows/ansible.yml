@@ -40,11 +40,6 @@ jobs:
       with:
         ssh-private-key: ${{ secrets.SSH_PRIVATE_KEY }}
     
-    - name: ssh permission
-      run: |
-        sudo systemctl restart ssh   # For systems using systemd
-        sudo service ssh restart      # For systems using SysV init
-
     - name: Run Ansible Playbook
       run: |
-        ansible-playbook -i inventory user.yaml -vvvv
+        ansible-playbook -i inventory user.yaml
