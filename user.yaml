@@ -2,6 +2,7 @@
 - name: Create Users & Groups
   hosts: ubuntu
   remote_user: ec2-user
+  gather_facts: false
   become: yes
   tasks:
     - name: Create group
