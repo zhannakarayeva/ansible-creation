@@ -1,7 +1,7 @@
 ---
 - name: Create Users & Groups
   hosts: ubuntu
-  remote_user: ubuntu
+  remote_user: ec2-user
   become: yes
   tasks:
     - name: Create group
