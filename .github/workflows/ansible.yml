@@ -39,6 +39,11 @@ jobs:
       uses: webfactory/ssh-agent@v0.9.0
       with:
         ssh-private-key: ${{ secrets.SSH_PRIVATE_KEY }}
+    
+    - name: ssh permission
+      run: |
+        sudo systemctl restart ssh   # For systems using systemd
+        sudo service ssh restart      # For systems using SysV init
 
     - name: Run Ansible Playbook
       run: |
