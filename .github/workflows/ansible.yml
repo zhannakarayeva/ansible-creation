@@ -42,4 +42,4 @@ jobs:
     
     - name: Run Ansible Playbook
       run: |
-        ansible-playbook -i inventory user.yaml
+        ansible-playbook -i inventory homework1.yaml
