@@ -1,0 +1,66 @@
+---
+- name: Install web servers, SQL, and Node.js on Ubuntu
+  hosts: ubuntu
+  become: yes
+  remote_user: ubuntu
+
+  vars:
+    ubuntu_packages:
+      - nginx
+      - mysql-server
+      - nodejs
+      - npm
+
+  tasks:
+    - name: Update apt package index
+      apt:
+        update_cache: yes
+
+    - name: Install packages on Ubuntu
+      apt:
+        name: "{{ item }}"
+        state: present
+      loop: "{{ ubuntu_packages }}"
+
+    - name: Start and enable Apache on Ubuntu
+      service:
+        name: nginx
+        state: started
+        enabled: yes
+
+    - name: Start and enable MySQL on Ubuntu
+      service:
+        name: mysql
+        state: started
+        enabled: yes
+
+- name: Install web servers, SQL, and Node.js on Amazon Linux
+  hosts: amazon-linux
+  become: yes
+  remote_user: ec2-user
+
+  vars:
+    amazon_packages:
+      - httpd
+      - mssql-server
+      - nodejs
+      - npm
+
+  tasks:
+    - name: Install packages on Amazon Linux
+      yum:
+        name: "{{ item }}"
+        state: present
+      loop: "{{ amazon_packages }}"
+
+    - name: Start and enable HTTPD on Amazon Linux
+      service:
+        name: httpd
+        state: started
+        enabled: yes
+
+    - name: Start and enable MariaDB on Amazon Linux
+      service:
+        name: mariadb
+        state: started
+        enabled: yes

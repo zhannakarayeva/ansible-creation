@@ -5,8 +5,8 @@
   tasks:
   - name: Creating a file with content
     copy:
-      src: /tmp/
-      dest: "~/text.sh"
+      src: /tmp/test.txt
+      dest: ~/
       mode: 0755
       content: |
         tuncay

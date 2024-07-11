@@ -2,11 +2,12 @@
 - name: Create Users & Groups
   hosts: all
   remote_user: ec2-user
-  gather_facts: false
-  vars:
-    ansible_cfg:
-      defaults:
-        host_key_checking: false
+  become: yes
+  # gather_facts: false
+  # vars:
+  #   ansible_cfg:
+  #     defaults:
+  #       host_key_checking: false
   tasks:
     - name: Create group
       group:
@@ -22,7 +23,14 @@
       loop:
         - jake
         - tom
+        - jana
         - algreim
+
+    - name: Remove the user algerim
+      ansible.builtin.user:
+        name: algreim
+        state: absent
+        remove: yes
      
 # - name: Create Users & Groups
 #   hosts: amazon-linux
