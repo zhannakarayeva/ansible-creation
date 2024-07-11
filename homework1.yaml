@@ -3,6 +3,7 @@
   hosts: amazon-linux
   remote_user: ec2-user
   become: yes
+  gather_facts: false
   tasks:
     - name: Ensure group 'devs' exists
       ansible.builtin.group:
