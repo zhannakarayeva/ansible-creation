@@ -40,6 +40,7 @@ jobs:
       with:
         ssh-private-key: ${{ secrets.SSH_PRIVATE_KEY }}
     
+    
     - name: Run Ansible Playbook
       run: |
         ansible-playbook -i inventory homework1.yaml
