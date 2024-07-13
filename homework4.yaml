@@ -1,0 +1,29 @@
+---
+- name: Manage names.txt file
+  hosts: ubuntu
+  remote_user: ubuntu
+  vars:
+    last_name: "tas"  
+  tasks:
+  
+    - name: Create or ensure names.txt with initial content
+      copy:
+        dest: /tmp/names.txt  
+        content: |
+          Dan
+          Brestt
+          Liz
+          Arun
+        force: yes  
+
+    - name: Change Liz to Elizabeth in names.txt
+      lineinfile:
+        path: /tmp/names.txt  
+        regexp: '^Liz$'
+        line: 'Elizabeth'
+
+    - name: Append last name to names.txt
+      lineinfile:
+        path: /tmp/names.txt  
+        line: "{{ last_name }}"
+        insertafter: EOF

@@ -42,7 +42,6 @@
   vars:
     amazon_packages:
       - httpd
-      - mssql-server
       - nodejs
       - npm
 
@@ -58,9 +57,3 @@
         name: httpd
         state: started
         enabled: yes
-
-    # - name: Start and enable MariaDB on Amazon Linux
-    #   service:
-    #     name: mariadb
-    #     state: started
-    #     enabled: yes
