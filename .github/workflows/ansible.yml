@@ -3,7 +3,8 @@ name: Ansible test
 on:
   push:
     branches:
-      - main  # Adjust the branch name as needed
+      - main
+      - tt/ansible1  # Adjust the branch name as needed
 
 jobs:
   ansible-test:
@@ -43,5 +44,5 @@ jobs:
     
     - name: Run Ansible Playbook
       run: |
-        ansible-playbook -i inventory homework4.yaml --ssh-common-args='-o StrictHostKeyChecking=no'
+        ansible-playbook -i inventory homework3.yaml --ssh-common-args='-o StrictHostKeyChecking=no'
 
